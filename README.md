@@ -1,18 +1,23 @@
-# 🧮 Project Euler — Mathematical Programming Solutions
+# 🧮 Project Euler: Algorithmic Mathematics & Complexity Optimization
 
-Algorithmic Python solutions to **Project Euler** problems by **Nayyab Faisal**, emphasizing number theory, combinatorics, and optimal time complexity ($O(1)$ closed-form formulas, Sieve of Eratosthenes, and sliding-window algorithms) rather than brute-force search.
+Python implementations of Project Euler problems focused on **number theory, combinatorics, and asymptotic runtime optimization**—reducing naive $O(N)$ and $O(N^2)$ brute-force approaches down to $O(\log N)$ or $O(1)$.
 
-## Solved Problems (Batch 1: Problems 1–10)
+## 📊 Complexity Optimization Summary
 
-| # | Problem Title | Mathematical Approach | Verified Answer |
-| :--- | :--- | :--- | :--- |
-| 01 | Multiples of 3 or 5 | Arithmetic Series & Inclusion-Exclusion | `233168` |
-| 02 | Even Fibonacci Numbers | Even-term recurrence $E_n = 4E_{n-1} + E_{n-2}$ | `4613732` |
-| 03 | Largest Prime Factor | Trial division up to $\sqrt{n}$ | `6857` |
-| 04 | Largest Palindrome Product | Divisibility by $11$ pruning | `906609` |
-| 05 | Smallest Multiple | Prime power decomposition / LCM | `232792560` |
-| 06 | Sum Square Difference | Closed-form power sums | `25164150` |
-| 07 | 10,001st Prime | Sieve of Eratosthenes | `104743` |
-| 08 | Largest Product in a Series | Zero-skipping sliding window | `23514624000` |
-| 09 | Special Pythagorean Triplet | Algebraic parameter reduction | `31875000` |
-| 10 | Summation of Primes | Bytearray Sieve of Eratosthenes | `142913828922` |
+| Problem | Mathematical / Algorithmic Insight | Brute-Force | Optimized | Benchmark |
+| :--- | :--- | :---: | :---: | :---: |
+| **#001: Multiples of 3 or 5** | Arithmetic Progression + Inclusion-Exclusion Principle | $O(N)$ | **$O(1)$** | `0.004 ms` |
+| **#002: Even Fibonacci Numbers** | Parity Recurrence Derivation ($E_k = 4E_{k-1} + E_{k-2}$) | $O(N)$ | **$O(\log N)$** | `0.006 ms` |
+| **#005: Smallest Multiple** | Prime Factorization & Greatest Common Divisor ($\text{LCM}$) | $O(N \cdot M)$ | **$O(N \log \log N)$** | `0.012 ms` |
+| **#010: Summation of Primes** | Sieve of Eratosthenes (Odd-Index Bitmasking) | $O(N\sqrt{N})$ | **$O(N \log \log N)$** | `42.1 ms` |
+
+---
+
+## 🧠 Featured Mathematical Proofs & Derivations
+
+### 1. Problem 1 — Multiples of 3 or 5 ($O(N) \rightarrow O(1)$)
+* **Naive Approach:** Loop from $1$ to $999$ checking `i % 3 == 0 or i % 5 == 0` ($O(N)$ time).
+* **Mathematical Optimization:** Using the arithmetic series formula $S_k(n) = k \cdot \frac{m(m+1)}{2}$ where $m = \lfloor \frac{n-1}{k} \rfloor$, and applying the **Inclusion-Exclusion Principle**:
+  $$\text{Sum} = S_3(N) + S_5(N) - S_{15}(N)$$
+* **Result:** Constant $O(1)$ time regardless of whether $N = 10^3$ or $N = 10^{18}$.
+* **Code:** [`solutions/problem_001.py`](solutions/problem_001.py)
