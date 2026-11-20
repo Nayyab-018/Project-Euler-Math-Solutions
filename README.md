@@ -21,3 +21,11 @@ Python implementations of Project Euler problems focused on **number theory, com
   $$\text{Sum} = S_3(N) + S_5(N) - S_{15}(N)$$
 * **Result:** Constant $O(1)$ time regardless of whether $N = 10^3$ or $N = 10^{18}$.
 * **Code:** [`solutions/problem_001.py`](solutions/problem_001.py)
+### Problem 15 — Lattice Paths ($O(2^{2N}) \rightarrow O(N)$)
+* **Problem Statement:** Starting in the top-left corner of a $20 \times 20$ grid and moving only right ($R$) or down ($D$), how many routes reach the bottom-right corner?
+* **Naive Approach:** Recursive depth-first search (DFS) exploring every branch takes $O(2^{2N})$ time—requiring over $1.37 \times 10^{11}$ operations for $N = 20$.
+* **Mathematical Insight (Combinatorics):** Regardless of the route taken, every valid path on an $N \times N$ grid requires **exactly $N$ Right moves and $N$ Down moves**, for a fixed total of $2N$ steps. Finding the number of distinct paths reduces to counting how many ways we can choose which $N$ of the $2N$ steps are Right moves:
+  $$\text{Routes}(N) = \binom{2N}{N} = \frac{(2N)!}{(N!)^2}$$
+* **Result:** Drops runtime from exponential $O(2^{2N})$ to linear $O(N)$—computing all **137,846,528,820** routes in under `0.005 ms`.
+* **Code:** [`solutions/problem_015.py`](solutions/problem_015.py)
+
